@@ -42,12 +42,36 @@ impl TokenContract {
 
     pub fn transfer(env: Env, from: Address, to: Address, amount: i128) {
         from.require_auth();
-        let from_balance: i128 = env.storage().persistent().get(&DataKey::Balance(from.clone())).unwrap_or(0);
+        assert!(amount > 0, "Amount must be positive");
+
+        let from_balance: i128 = env.storage()
+            .persistent()
+            .get(&DataKey::Balance(from.clone()))
+            .unwrap_or(0);
         assert!(from_balance >= amount, "Insufficient balance");
-        env.storage().persistent().set(&DataKey::Balance(from.clone()), &(from_balance - amount));
-        let to_balance: i128 = env.storage().persistent().get(&DataKey::Balance(to.clone())).unwrap_or(0);
-        env.storage().persistent().set(&DataKey::Balance(to.clone()), &(to_balance + amount));
-        env.events().publish((symbol_short!("transfer"), from), (to, amount));
+
+        let new_from_balance = from_balance - amount;
+        env.storage()
+            .persistent()
+            .set(&DataKey::Balance(from.clone()), &new_from_balance);
+
+        let to_balance: i128 = env.storage()
+            .persistent()
+            .get(&DataKey::Balance(to.clone()))
+            .unwrap_or(0);
+        let new_to_balance = to_balance + amount;
+        env.storage()
+            .persistent()
+            .set(&DataKey::Balance(to.clone()), &new_to_balance);
+
+        env.storage().instance().extend_ttl(1000, 1000);
+        env.storage().persistent().extend_ttl(
+            &DataKey::Balance(from.clone()), 1000, 1000);
+        env.storage().persistent().extend_ttl(
+            &DataKey::Balance(to.clone()), 1000, 1000);
+
+        env.events()
+            .publish((symbol_short!("transfer"), from), (to, amount));
     }
 
     pub fn balance(env: Env, id: Address) -> i128 {
