@@ -7,36 +7,9 @@ on:
     branches: [main]
 
 jobs:
-  test-contracts:
-    name: Build Rust Contracts
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Install Rust
-        uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
-          target: wasm32-unknown-unknown
-          override: true
-
-      - name: Install Stellar CLI
-        run: cargo install --locked stellar-cli --features opt
-
-      - name: Build Token Contract
-        run: |
-          cd contracts/token
-          stellar contract build
-
-      - name: Build Staking Contract
-        run: |
-          cd contracts/staking
-          stellar contract build
-
   build-frontend:
     name: Build Frontend
     runs-on: ubuntu-latest
-    needs: test-contracts
     steps:
       - uses: actions/checkout@v3
 
@@ -54,3 +27,28 @@ jobs:
         run: |
           cd frontend
           npm run build
+
+  test-contracts:
+    name: Build Rust Contracts
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown
+
+      - name: Install Stellar CLI
+        run: |
+          cargo install --locked stellar-cli --features opt
+
+      - name: Build Token Contract
+        run: |
+          cd contracts/token
+          cargo build --target wasm32-unknown-unknown --release
+
+      - name: Build Staking Contract
+        run: |
+          cd contracts/staking
+          cargo build --target wasm32-unknown-unknown --release
