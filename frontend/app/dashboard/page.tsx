@@ -26,9 +26,10 @@ export default function DashboardPage() {
         filters: [{ type: "contract", contractIds: [CONTRACT_ADDRESSES.STAKING] }],
         limit: 20,
       });
-      if (events?.records && events.records.length > 0) {
-        const newEvents = events.records.map((e: any) => ({
-          id: e.id,
+      const records = (events as any)?.records || (events as any)?.events || [];
+      if (records.length > 0) {
+        const newEvents = records.map((e: any) => ({
+          id: e.id || Math.random().toString(),
           type: e.topic?.[0]?.toString() || "event",
           amount: e.value?.toString() || "0",
           time: new Date().toLocaleTimeString(),
