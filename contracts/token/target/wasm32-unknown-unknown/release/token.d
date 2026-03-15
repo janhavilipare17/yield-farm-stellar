@@ -1,1 +1,0 @@
-C:\Users\Janhavi\OneDrive\Desktop\steller\ internship\yield-farm-stellar\contracts\token\target\wasm32-unknown-unknown\release\token.wasm: C:\Users\Janhavi\OneDrive\Desktop\steller\ internship\yield-farm-stellar\contracts\token\src\lib.rs
