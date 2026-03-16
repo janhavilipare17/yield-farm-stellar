@@ -21,16 +21,10 @@ export default function Home() {
           Powered by Soroban smart contracts.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link
-            href="/stake"
-            className="bg-green-500 hover:bg-green-600 text-black font-bold py-3 px-8 rounded-lg transition"
-          >
+          <Link href="/stake" className="bg-green-500 hover:bg-green-600 text-black font-bold py-3 px-8 rounded-lg transition">
             Start Staking
           </Link>
-          <Link
-            href="/dashboard"
-            className="border border-green-500 text-green-400 hover:bg-green-500/10 font-bold py-3 px-8 rounded-lg transition"
-          >
+          <Link href="/dashboard" className="border border-green-500 text-green-400 hover:bg-green-500/10 font-bold py-3 px-8 rounded-lg transition">
             View Dashboard
           </Link>
         </div>
@@ -41,19 +35,36 @@ export default function Home() {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           <div className="bg-gray-900 border border-gray-800 rounded-xl p-6 text-center">
             <p className="text-gray-400 text-sm mb-2">Token Contract</p>
-            <p className="text-green-400 text-xs font-mono break-all">
-              CAKTNJ3WVI2AEDN62TP2DJJYBD24FYUXTCUBZMUG6THA4U4OZIANR2BO
-            </p>
+            
+              <a href="https://stellar.expert/explorer/testnet/contract/CAIBAOAMQCILYEI3LTM3DUK3G3DA3Q3FG7ON4FBFKOFF7EV46GAKZTWU"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-green-400 text-xs font-mono break-all hover:text-green-300 underline"
+            >
+              CAIBAOAMQCILYEI3LTM3DUK3G3DA3Q3FG7ON4FBFKOFF7EV46GAKZTWU
+            </a>
           </div>
           <div className="bg-gray-900 border border-gray-800 rounded-xl p-6 text-center">
             <p className="text-gray-400 text-sm mb-2">Staking Contract</p>
-            <p className="text-green-400 text-xs font-mono break-all">
+            
+              <a href="https://stellar.expert/explorer/testnet/contract/CDK43XOUACVO327NBOWCMYVJ7BDMZ6KNISUA7JOF3UA3F2QH6OJIQ2E4"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-green-400 text-xs font-mono break-all hover:text-green-300 underline"
+            >
               CDK43XOUACVO327NBOWCMYVJ7BDMZ6KNISUA7JOF3UA3F2QH6OJIQ2E4
-            </p>
+            </a>
           </div>
           <div className="bg-gray-900 border border-gray-800 rounded-xl p-6 text-center">
             <p className="text-gray-400 text-sm mb-2">Network</p>
-            <p className="text-green-400 font-bold text-lg">Stellar Testnet</p>
+            
+             <a href="https://stellar.expert/explorer/testnet"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-green-400 font-bold text-lg hover:text-green-300"
+            >
+              Stellar Testnet ↗
+            </a>
           </div>
         </div>
       </div>
