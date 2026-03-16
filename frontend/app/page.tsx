@@ -89,7 +89,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="border-t border-gray-800 px-4 py-6 mt-10">
         <div className="max-w-6xl mx-auto text-center text-gray-500 text-sm">
-          Built on Stellar Soroban • YieldFarm 2025
+          Built on Stellar Soroban • YieldFarm 2026
         </div>
       </footer>
     </main>
