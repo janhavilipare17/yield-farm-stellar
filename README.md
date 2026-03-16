@@ -2,8 +2,8 @@
 
 A production-ready yield farming dApp built on Stellar Soroban smart contracts with inter-contract calls, custom token, real-time event streaming, and CI/CD pipeline.
 
-##  Live Demo
-[https://yield-farm-stellar.vercel.app](yield-farm-stellar-8uv3-fb7ntbu4y-janhavilipare17s-projects.vercel.app)
+## 🔗 Live Demo
+[https://yield-farm-stellar-8uv3.vercel.app](https://yield-farm-stellar-8uv3.vercel.app)
 
 
 ##  Screenshots
