@@ -125,11 +125,25 @@ export default function DashboardPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="bg-gray-900 border border-gray-800 rounded-xl p-4">
             <p className="text-gray-400 text-xs mb-1">Token Contract</p>
-            <p className="text-green-400 text-xs font-mono break-all">{CONTRACT_ADDRESSES.TOKEN}</p>
+            
+              <a href={`https://stellar.expert/explorer/testnet/contract/${CONTRACT_ADDRESSES.TOKEN}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-green-400 text-xs font-mono break-all hover:text-green-300 underline"
+            >
+              {CONTRACT_ADDRESSES.TOKEN}
+            </a>
           </div>
           <div className="bg-gray-900 border border-gray-800 rounded-xl p-4">
             <p className="text-gray-400 text-xs mb-1">Staking Contract</p>
-            <p className="text-green-400 text-xs font-mono break-all">{CONTRACT_ADDRESSES.STAKING}</p>
+            
+             <a href={`https://stellar.expert/explorer/testnet/contract/${CONTRACT_ADDRESSES.STAKING}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-green-400 text-xs font-mono break-all hover:text-green-300 underline"
+            >
+              {CONTRACT_ADDRESSES.STAKING}
+            </a>
           </div>
         </div>
         <div className="mt-6 text-center">
