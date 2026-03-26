@@ -33,10 +33,18 @@ impl TokenContract {
     }
 
     pub fn mint(env: Env, to: Address, amount: i128) {
-        let admin: Address = env.storage().instance().get(&DataKey::Admin).unwrap();
+        let admin: Address = env.storage()
+            .instance()
+            .get(&DataKey::Admin)
+            .unwrap();
         admin.require_auth();
-        let balance: i128 = env.storage().persistent().get(&DataKey::Balance(to.clone())).unwrap_or(0);
-        env.storage().persistent().set(&DataKey::Balance(to.clone()), &(balance + amount));
+        let balance: i128 = env.storage()
+            .persistent()
+            .get(&DataKey::Balance(to.clone()))
+            .unwrap_or(0);
+        env.storage()
+            .persistent()
+            .set(&DataKey::Balance(to.clone()), &(balance + amount));
         env.events().publish((symbol_short!("minted"), to), amount);
     }
 
@@ -75,7 +83,10 @@ impl TokenContract {
     }
 
     pub fn balance(env: Env, id: Address) -> i128 {
-        env.storage().persistent().get(&DataKey::Balance(id)).unwrap_or(0)
+        env.storage()
+            .persistent()
+            .get(&DataKey::Balance(id))
+            .unwrap_or(0)
     }
 
     pub fn admin(env: Env) -> Address {
@@ -91,6 +102,27 @@ impl TokenContract {
     }
 
     pub fn decimals(env: Env) -> u32 {
-        env.storage().instance().get(&DataKey::Decimal).unwrap_or(7)
+        env.storage()
+            .instance()
+            .get(&DataKey::Decimal)
+            .unwrap_or(7)
+    }
+
+    pub fn faucet(env: Env, to: Address) {
+        to.require_auth();
+        let faucet_amount: i128 = 1_000_000_000;
+        let balance: i128 = env.storage()
+            .persistent()
+            .get(&DataKey::Balance(to.clone()))
+            .unwrap_or(0);
+        env.storage()
+            .persistent()
+            .set(&DataKey::Balance(to.clone()), &(balance + faucet_amount));
+        env.storage().instance().extend_ttl(1000, 1000);
+        env.storage()
+            .persistent()
+            .extend_ttl(&DataKey::Balance(to.clone()), 1000, 1000);
+        env.events()
+            .publish((symbol_short!("faucet"), to), faucet_amount);
     }
 }
