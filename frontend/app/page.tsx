@@ -1,5 +1,5 @@
 import Link from "next/link";
-
+import { CONTRACT_ADDRESSES } from "@/lib/contracts";
 export default function Home() {
   return (
     <main className="min-h-screen bg-gray-950 text-white">
@@ -30,44 +30,44 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Stats */}
-      <div className="max-w-6xl mx-auto px-4 py-10">
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-          <div className="bg-gray-900 border border-gray-800 rounded-xl p-6 text-center">
-            <p className="text-gray-400 text-sm mb-2">Token Contract</p>
-            
-              <a href="https://stellar.expert/explorer/testnet/contract/CAIBAOAMQCILYEI3LTM3DUK3G3DA3Q3FG7ON4FBFKOFF7EV46GAKZTWU"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-green-400 text-xs font-mono break-all hover:text-green-300 underline"
-            >
-              CAIBAOAMQCILYEI3LTM3DUK3G3DA3Q3FG7ON4FBFKOFF7EV46GAKZTWU
-            </a>
-          </div>
-          <div className="bg-gray-900 border border-gray-800 rounded-xl p-6 text-center">
-            <p className="text-gray-400 text-sm mb-2">Staking Contract</p>
-            
-              <a href="https://stellar.expert/explorer/testnet/contract/CDK43XOUACVO327NBOWCMYVJ7BDMZ6KNISUA7JOF3UA3F2QH6OJIQ2E4"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-green-400 text-xs font-mono break-all hover:text-green-300 underline"
-            >
-              CDK43XOUACVO327NBOWCMYVJ7BDMZ6KNISUA7JOF3UA3F2QH6OJIQ2E4
-            </a>
-          </div>
-          <div className="bg-gray-900 border border-gray-800 rounded-xl p-6 text-center">
-            <p className="text-gray-400 text-sm mb-2">Network</p>
-            
-             <a href="https://stellar.expert/explorer/testnet"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-green-400 font-bold text-lg hover:text-green-300"
-            >
-              Stellar Testnet ↗
-            </a>
-          </div>
-        </div>
-      </div>
+     {/* Stats */}
+<div className="max-w-6xl mx-auto px-4 py-10">
+  <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+    <div className="bg-gray-900 border border-gray-800 rounded-xl p-6 text-center">
+      <p className="text-gray-400 text-sm mb-2">Token Contract</p>
+      
+       <a href={`https://stellar.expert/explorer/testnet/contract/${CONTRACT_ADDRESSES.TOKEN}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-green-400 text-xs font-mono break-all hover:text-green-300 underline"
+      >
+        {CONTRACT_ADDRESSES.TOKEN}
+      </a>
+    </div>
+    <div className="bg-gray-900 border border-gray-800 rounded-xl p-6 text-center">
+      <p className="text-gray-400 text-sm mb-2">Staking Contract</p>
+      
+       <a href={`https://stellar.expert/explorer/testnet/contract/${CONTRACT_ADDRESSES.STAKING}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-green-400 text-xs font-mono break-all hover:text-green-300 underline"
+      >
+        {CONTRACT_ADDRESSES.STAKING}
+      </a>
+    </div>
+    <div className="bg-gray-900 border border-gray-800 rounded-xl p-6 text-center">
+      <p className="text-gray-400 text-sm mb-2">Network</p>
+      
+       <a href="https://stellar.expert/explorer/testnet"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-green-400 font-bold text-lg hover:text-green-300"
+      >
+        Stellar Testnet ↗
+      </a>
+    </div>
+  </div>
+</div>
 
       {/* Features */}
       <div className="max-w-6xl mx-auto px-4 py-10">
